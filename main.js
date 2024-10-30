@@ -7,7 +7,7 @@ fetch(apiURL)
 .then(response => {
     //checking if the response working/okay 
     if (!response.ok) {
-        throw new Error('Network response was not working' + response.statusText);
+        throw new Error('Network response was not working: ' + response.statusText);
     }
     return response.json(); //using JSON to pharse the response
 })
