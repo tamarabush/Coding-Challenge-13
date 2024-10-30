@@ -14,7 +14,14 @@ fetch(apiURL)
 .then(data => {
     //If the fetch is successful, extract the product details and display them
     displayProducts(data);
-});
+})
+//TASK 4 -  Handle Errors Gracefully:
+.catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+    document.getElementById('error-message').innerText = 'Failed to load products. Please try again later.';
+    document.getElementById('error-message').style.display = 'block'; // Show the error message
+    });
+
 
 
 //TASK 3 - Display Product Details Dynamically:
@@ -27,12 +34,12 @@ function displayProducts(data) {
         const productDiv = document.createElement('div');
 
     //Create HTML structure for each dataset
-    productDiv.innerHTML = (`
+    productDiv.innerHTML = `
             <img src="${product.image}" alt="${product.name}" />
             <h2>${product.name}</h2>
             <p>Company: ${product.company}</p>
             <p>Price: $${product.price}</p>
-        `);
+        `;
         productsContainer.appendChild(productDiv); // Add the product div to the container
     }); 
 }
