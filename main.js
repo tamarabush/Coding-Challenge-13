@@ -14,4 +14,25 @@ fetch(apiURL)
 .then(data => {
     //If the fetch is successful, extract the product details and display them
     displayProducts(data);
-})
+});
+
+
+//TASK 3 - Display Product Details Dynamically:
+
+function displayProducts(data) {
+    const productsContainer = document.getElementById('products-container');
+
+    //Iterate through each product and create HTML elements
+    data.forEach(product => {
+        const productDiv = document.createElement('div');
+
+    //Create HTML structure for each dataset
+    productDiv.innerHTML = (`
+            <img src="${product.image}" alt="${product.name}" />
+            <h2>${product.name}</h2>
+            <p>Company: ${product.company}</p>
+            <p>Price: $${product.price}</p>
+        `);
+        productsContainer.appendChild(productDiv); // Add the product div to the container
+    }); 
+}
